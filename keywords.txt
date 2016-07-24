@@ -1,0 +1,53 @@
+#********************************
+# Syntax Coloring Map for BMA220
+#********************************
+
+#********************************
+# Datatypes (KEYWORD1)
+#********************************
+
+BMA220	KEYWORD1
+
+
+#********************************
+# Methods and Functions (KEYWORD2)
+#********************************
+
+setRegister	KEYWORD2
+readRegister	KEYWORD2
+readAcceleration	KEYWORD2
+chipID	KEYWORD2
+revisionID	KEYWORD2
+
+
+#********************************
+# Constants (LITERAL1)
+#********************************
+
+BMA220_ADDR	LITERAL1
+XAXIS	LITERAL1
+YAXIS	LITERAL1
+ZAXIS	LITERAL1
+ONEBYTE	LITERAL1
+INTRP_MODE_REG	LITERAL1
+SLOPE_REG	LITERAL1
+SOFTRESET_REG	LITERAL1
+SENSITIVITY_REG	LITERAL1
+FILTER_REG	LITERAL1
+CHIPID_REG	LITERAL1
+REVISIONID_REG	LITERAL1
+INTRP_RES_REG	LITERAL1
+SLOPEDETECT	LITERAL1
+SLOPEPAR1	LITERAL1
+SENS_2g	LITERAL1
+SENS_4g	LITERAL1
+SENS_8g	LITERAL1
+SENS_16g	LITERAL1
+FILTER_32Hz	LITERAL1
+FILTER_64Hz	LITERAL1
+FILTER_125Hz	LITERAL1
+FILTER_250Hz	LITERAL1
+FILTER_500Hz	LITERAL1
+FILTER_1kHz	LITERAL1
+INTRP_LATCH0s	LITERAL1
+INTRP_LATCH1s	LITERAL1
