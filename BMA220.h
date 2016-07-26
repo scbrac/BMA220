@@ -29,7 +29,7 @@
 #include "Arduino.h"
 #include "Wire.h"
 
-#define BMA220_DEBUG
+//#define BMA220_DEBUG
 #ifdef BMA220_DEBUG
   #define BMA220_DEBUG_PRINT(x) Serial.print(x)
   #define BMA220_DEBUG_PRINTLN(x) Serial.println(x)
