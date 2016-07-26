@@ -6,7 +6,7 @@ void setup() {
     Serial.begin(9600);
     if (!bma.begin()) {
         Serial.println(F("No valid BMA220 sensor found, check wiring"));
-        while (true):  // stop here, no reason to go on...
+        while (true)  // stop here, no reason to go on...
             ;
     }
 }

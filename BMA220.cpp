@@ -30,10 +30,13 @@ BMA220::BMA220(){
 
 bool BMA220::begin(void) {
     Wire.begin();
+    BMA220_DEBUG_PRINTLN("Try to reset sensor...");
     if (reset() != 0xFF) {
+        BMA220_DEBUG_PRINTLN("...failed!");
         return false;
     }
     else {
+        BMA220_DEBUG_PRINTLN("...worked!");
         return true;
     }
 }
@@ -46,9 +49,15 @@ void BMA220::setRegister(uint8_t reg, uint8_t value) {
     }
 
 int8_t BMA220::readRegister(uint8_t reg) {
+    BMA220_DEBUG_PRINT("Read register 0x");
+    BMA220_DEBUG_PRINTLN_HEX(reg);
     Wire.beginTransmission(BMA220_ADDR);
+    BMA220_DEBUG_PRINT("I2C address: 0x");
+    BMA220_DEBUG_PRINTLN_HEX(BMA220_ADDR);
     Wire.write(reg);
+    BMA220_DEBUG_PRINTLN("Register is selected");
     Wire.endTransmission(); 
+    BMA220_DEBUG_PRINTLN("Get one byte...");
     Wire.requestFrom(BMA220_ADDR, ONEBYTE);
     return Wire.read();
 }
@@ -63,19 +72,16 @@ int8_t BMA220::readAcceleration(uint8_t axis) {
 }
 
 uint8_t BMA220::reset(void) {
+    BMA220_DEBUG_PRINTLN("Read reset register");
     resetvalue = readRegister(SOFTRESET_REG);
-#if (BMA220_DEBUG)
-    Serial.print("Reset-value: ");
-    Serial.println(resetvalue);
-#endif
+    BMA220_DEBUG_PRINT("Reset-value: ");
+    BMA220_DEBUG_PRINTLN(resetvalue);
     if (resetvalue == 0x00){
         // BMA220 befindet sich im Reset-Modus.
         // Erneutes Lesen beendet den Reset-Modus
         resetvalue = readRegister(SOFTRESET_REG);
-#if (BMA220_DEBUG)
-        Serial.print("Neuer Reset-value: ");
-        Serial.println(resetvalue);
-#endif
+        BMA220_DEBUG_PRINT("New reset value: ");
+        BMA220_DEBUG_PRINTLN_HEX(resetvalue);
     }
     return resetvalue;
 

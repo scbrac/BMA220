@@ -29,7 +29,16 @@
 #include "Arduino.h"
 #include "Wire.h"
 
-#define BMA220_DEBUG 0
+#define BMA220_DEBUG
+#ifdef BMA220_DEBUG
+  #define BMA220_DEBUG_PRINT(x) Serial.print(x)
+  #define BMA220_DEBUG_PRINTLN(x) Serial.println(x)
+  #define BMA220_DEBUG_PRINTLN_HEX(x) Serial.println(x, HEX)
+#else
+  #define BMA220_DEBUG_PRINT(x)
+  #define BMA220_DEBUG_PRINTLN(x)
+  #define BMA220_DEBUG_PRINTLN_HEX(x)
+#endif
 
 const uint8_t BMA220_ADDR     = 0x0A; // I2C Address of the sensor
 const uint8_t XAXIS           = 0x04; // x-axis acceleration value register
@@ -78,8 +87,8 @@ class BMA220 {
     public:
         BMA220();
         bool begin(void);
-        void setregister(uint8_t reg, uint8_t value);
-        int8_t readregister(uint8_t reg);
+        void setRegister(uint8_t reg, uint8_t value);
+        int8_t readRegister(uint8_t reg);
         int8_t readAcceleration(uint8_t axis);
         uint8_t reset(void);
         uint8_t chipID(void);
